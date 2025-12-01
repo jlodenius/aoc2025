@@ -42,9 +42,7 @@ pub fn solve() {
                 dial = (dial + val) % 100;
             }
         }
-        if dial == 0 {
-            count += 1;
-        }
+        count += (dial == 0) as i32
     }
     println!("P1: {count}");
 
@@ -58,10 +56,7 @@ pub fn solve() {
                 let remainder = val % 100;
 
                 count += full_rotations;
-
-                if remainder >= dial && dial != 0 {
-                    count += 1;
-                }
+                count += (remainder >= dial && dial != 0) as i32;
 
                 dial = (dial + 100 - remainder) % 100;
             }
@@ -70,10 +65,7 @@ pub fn solve() {
                 let remainder = val % 100;
 
                 count += full_rotations;
-
-                if dial + remainder >= 100 {
-                    count += 1;
-                }
+                count += (dial + remainder >= 100) as i32;
 
                 dial = (dial + val) % 100;
             }
