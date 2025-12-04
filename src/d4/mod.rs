@@ -52,11 +52,8 @@ pub fn solve() {
     for y in 0..input.len() {
         let row = input.get(y).unwrap();
         for x in 0..row.len() {
-            if input[y][x] {
-                let adjacent = count_adjacent(x, y, &input);
-                if adjacent < 4 {
-                    count += 1;
-                }
+            if input[y][x] && count_adjacent(x, y, &input) < 4 {
+                count += 1;
             }
         }
     }
@@ -71,13 +68,10 @@ pub fn solve() {
         for y in 0..input.len() {
             let row = input.get(y).unwrap();
             for x in 0..row.len() {
-                if input[y][x] {
-                    let adjacent = count_adjacent(x, y, &input);
-                    if adjacent < 4 {
-                        input[y][x] = false;
-                        keep_going = true;
-                        count += 1;
-                    }
+                if input[y][x] && count_adjacent(x, y, &input) < 4 {
+                    input[y][x] = false;
+                    keep_going = true;
+                    count += 1;
                 }
             }
         }
