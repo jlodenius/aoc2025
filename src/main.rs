@@ -4,6 +4,7 @@ pub mod d3;
 pub mod d4;
 pub mod d5;
 pub mod d6;
+pub mod d7;
 
 fn main() {
     // d1::solve();
@@ -11,5 +12,6 @@ fn main() {
     // d3::solve();
     // d4::solve();
     // d5::solve();
-    d6::solve();
+    // d6::solve();
+    d7::solve();
 }
