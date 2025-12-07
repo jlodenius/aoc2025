@@ -98,16 +98,16 @@ impl Manifold {
 
         // Current state:
         // how many worlds are currently at a given position
-        let mut ways = vec![vec![0u128; max_x]; max_y];
+        let mut worlds = vec![vec![0u128; max_x]; max_y];
 
-        let (sy, sx) = self.spawn_point;
-        ways[sy][sx] = 1;
+        let (spawn_y, spawn_x) = self.spawn_point;
+        worlds[spawn_y][spawn_x] = 1;
 
         let mut worlds_at_floor: u128 = 0;
 
-        for y in sy..max_y {
+        for y in 0..max_y {
             for x in 0..max_x {
-                let count = ways[y][x];
+                let count = worlds[y][x];
                 if count == 0 {
                     continue;
                 }
@@ -115,7 +115,7 @@ impl Manifold {
                 match self.shaft[y][x] {
                     Thing::Start | Thing::Air | Thing::Beam => {
                         if y + 1 < max_y {
-                            ways[y + 1][x] += count;
+                            worlds[y + 1][x] += count;
                         } else {
                             // this branch is at bottom
                             worlds_at_floor += count;
@@ -124,7 +124,7 @@ impl Manifold {
                     Thing::Splitter => {
                         // Left branch
                         if y + 1 < max_y && x > 0 {
-                            ways[y + 1][x - 1] += count;
+                            worlds[y + 1][x - 1] += count;
                         } else {
                             // this branch is at bottom
                             worlds_at_floor += count;
@@ -132,7 +132,7 @@ impl Manifold {
 
                         // Right branch
                         if y + 1 < max_y && x + 1 < max_x {
-                            ways[y + 1][x + 1] += count;
+                            worlds[y + 1][x + 1] += count;
                         } else {
                             // this branch is at bottom
                             worlds_at_floor += count;
