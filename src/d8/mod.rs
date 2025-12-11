@@ -92,11 +92,15 @@ pub fn solve() {
             let binding = line.unwrap();
             let mut parts = binding.splitn(3, ',');
 
-            let x: i64 = parts.next().map(|s| s.parse().unwrap()).unwrap();
-            let y: i64 = parts.next().map(|s| s.parse().unwrap()).unwrap();
-            let z: i64 = parts.next().map(|s| s.parse().unwrap()).unwrap();
-
-            Junction { x, y, z }
+            if let (Some(x), Some(y), Some(z)) = (parts.next(), parts.next(), parts.next()) {
+                Junction {
+                    x: x.parse().unwrap(),
+                    y: y.parse().unwrap(),
+                    z: z.parse().unwrap(),
+                }
+            } else {
+                panic!("sum ting wong")
+            }
         })
         .collect();
 

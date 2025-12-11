@@ -172,10 +172,11 @@ pub fn solve() {
             let binding = line.unwrap();
             let mut line = binding.split(',');
 
-            let x: i64 = line.next().unwrap().parse().unwrap();
-            let y: i64 = line.next().unwrap().parse().unwrap();
-
-            (x, y).into()
+            if let (Some(x), Some(y)) = (line.next(), line.next()) {
+                (x.parse().unwrap(), y.parse().unwrap()).into()
+            } else {
+                panic!("sum ting wong");
+            }
         })
         .collect();
 

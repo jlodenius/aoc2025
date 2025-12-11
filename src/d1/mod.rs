@@ -23,7 +23,7 @@ pub fn solve() {
             match direction {
                 "L" => Instruction::L(value.parse().unwrap()),
                 "R" => Instruction::R(value.parse().unwrap()),
-                _ => panic!("invalid input"),
+                _ => panic!("hoo lee fuk"),
             }
         })
         .collect();
