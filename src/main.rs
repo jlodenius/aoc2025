@@ -8,6 +8,7 @@ pub mod d7;
 pub mod d8;
 pub mod d9;
 pub mod d_10;
+pub mod d_11;
 
 fn main() {
     // d1::solve();
@@ -19,5 +20,6 @@ fn main() {
     // d7::solve();
     // d8::solve();
     // d9::solve();
-    d_10::solve();
+    // d_10::solve();
+    d_11::solve();
 }
